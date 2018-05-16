@@ -17,8 +17,8 @@ const rewireJest = (config: any) => {
     if (Array.isArray(setting)) {
       // Replace file extensions in setting arrays.
       for (let j = 0; j < setting.length; j += 1) {
-        setting[j] = setting[j].replace("js,jsx,mjs", "ts,tsx,js,jsx,mjs");
-        setting[j] = setting[j].replace("js|jsx|mjs", "ts|tsx|js|jsx|mjs");
+        setting[j] = setting[j].replace("js,jsx,mjs", "ts,tsx,js,jsx");
+        setting[j] = setting[j].replace("js|jsx|mjs", "ts|tsx|js|jsx");
       }
     } else if (typeof setting === "object") {
       // Replace file extensions in keys of setting dictionaries.
@@ -26,8 +26,8 @@ const rewireJest = (config: any) => {
 
       Object.keys(setting).forEach(settingObjKey => {
         const newSettingsObjKey = settingObjKey.replace(
-          "js|jsx|mjs",
-          "ts|tsx|js|jsx|mjs"
+          "js|jsx",
+          "ts|tsx|js|jsx"
         );
         const newSettingValue = replaceBabelTransform(setting[settingObjKey]);
         // @ts-ignore
